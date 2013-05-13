@@ -6,7 +6,6 @@ public class AppServidor {
         
         Servidor ser = new Servidor();
         Thread t1 = new Thread(ser);
-        
         t1.start();
 
     }
