@@ -9,6 +9,8 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,6 +42,8 @@ public class Servidor implements Runnable{
                 
                 msgCliente = read.readLine();           
 
+                HashMap<String, List> mensagens = new HashMap<>();
+                
                 if ("MSG".equals(msgCliente)){
                     String json = read.readLine();
                     Gson gson = new Gson();
