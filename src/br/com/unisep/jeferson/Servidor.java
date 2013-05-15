@@ -38,25 +38,21 @@ public class Servidor implements Runnable{
                 saida = socket.getOutputStream();
                 ps = new PrintStream(saida);
                 
-                msgCliente = read.readLine();
-
-                System.out.println("" + msgCliente);            
+                msgCliente = read.readLine();           
 
                 if ("MSG".equals(msgCliente)){
                     String json = read.readLine();
-                    System.out.println("" + json);
-                    
                     Gson gson = new Gson();
                     
                     Mensagem ms = gson.fromJson(json, Mensagem.class);
-                    ps.println("Destino: " + ms.getDestino());
+                    ps.println("Enviado mensagem para: " + ms.getDestino());
                 }
                 
                 read.close();
                 entrada.close();
                 socket.close();
 
-                System.out.println("Conexão finalizada.");
+                System.out.println("Esperando nova conexão.");
             }
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
